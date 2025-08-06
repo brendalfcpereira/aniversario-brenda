@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Confirmação – Aniversário da Brenda</title>
+  <style>
+    body {
+      background-color: #5A2D82;
+      color: #FFFFFF;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      text-align: center;
+      padding: 40px;
+    }
+    .container {
+      max-width: 500px;
+      margin: 0 auto;
+      background: rgba(0,0,0,0.2);
+      border-radius: 12px;
+      padding: 30px;
+    }
+    h1 {
+      font-size: 2.4em;
+      margin-bottom: 10px;
+    }
+    p.subtitle {
+      font-size: 1.2em;
+      margin-bottom: 30px;
+    }
+    form {
+      display: grid;
+      grid-gap: 20px;
+    }
+    input, select, button {
+      padding: 12px;
+      font-size: 1em;
+      border-radius: 6px;
+      border: none;
+    }
+    input, select {
+      width: 100%;
+    }
+    button {
+      background-color: #FFB800;
+      color: #5A2D82;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #e6a200;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🎤 Save The Date!</h1>
+    <p class="subtitle">Aniversário da Brenda – 15 de Agosto</p>
+    <form action="https://formspree.io/f/xpwloagq" method="POST">
+      <input type="text" name="nome" placeholder="Seu nome" required>
+      <select name="presenca" required>
+        <option value="">Confirmar presença?</option>
+        <option value="Sim, estarei lá">Sim, estarei lá 🎉</option>
+        <option value="Não vou poder">Não vou poder 😢</option>
+      </select>
+      <input type="text" name="musica" placeholder="Vai cantar qual música?">
+      <button type="submit">Enviar confirmação</button>
+    </form>
+  </div>
+</body>
+</html>
