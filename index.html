@@ -57,39 +57,31 @@
       font-weight: bold;
     }
 
-    form {
-      background: rgba(255,255,255,0.05);
-      padding: 2rem;
-      border-radius: 12px;
-      box-shadow: 0 0 12px rgba(0,0,0,0.2);
-      text-align: left;
-    }
-
-    label {
-      display: block;
-      margin-bottom: 0.5rem;
-      font-weight: 600;
-    }
-
-    input, select, textarea, button {
-      width: 100%;
-      padding: 0.75rem;
-      margin-bottom: 1rem;
-      border: none;
-      border-radius: 8px;
-      font-size: 1rem;
-    }
-
-    button {
+    .map-button {
+      display: inline-block;
+      margin: 1rem auto 2rem;
       background-color: var(--amarelo);
       color: var(--roxo-escuro);
       font-weight: bold;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      text-decoration: none;
       transition: background 0.3s ease;
-      cursor: pointer;
     }
 
-    button:hover {
+    .map-button:hover {
       background-color: #e6c200;
+    }
+
+    .form-embed {
+      margin-top: 2rem;
+    }
+
+    iframe {
+      width: 100%;
+      height: 700px;
+      border: none;
+      border-radius: 12px;
     }
 
     footer {
@@ -116,25 +108,11 @@
       <div id="seconds">-- s</div>
     </div>
 
-    <form action="https://formspree.io/f/SEU_FORM_ID" method="POST">
-      <label for="nome">Nome</label>
-      <input type="text" id="nome" name="nome" placeholder="Seu nome" required>
+    <a href="https://maps.app.goo.gl/JtnR7Aka1RSf2vwD9" target="_blank" class="map-button">📍 Ver Localização</a>
 
-      <label for="presenca">Confirmar presença</label>
-      <select id="presenca" name="presenca" required>
-        <option value="">Escolha uma opção</option>
-        <option value="Sim, estarei lá">Sim, estarei lá 🎤</option>
-        <option value="Não poderei ir">Não poderei ir 😢</option>
-      </select>
-
-      <label for="musica">Qual música você quer cantar?</label>
-      <input type="text" id="musica" name="musica" placeholder="Ex: Evidências, Halo...">
-
-      <label for="recado">Mensagem para a aniversariante (opcional)</label>
-      <textarea id="recado" name="recado" rows="3" placeholder="Escreva uma mensagem ou recado especial"></textarea>
-
-      <button type="submit">Confirmar Presença</button>
-    </form>
+    <div class="form-embed">
+      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfDUMMYID-FORMULARIO/viewform?embedded=true" loading="lazy">Carregando…</iframe>
+    </div>
 
     <footer>
       Site feito com carinho para a festa da Brenda 🎶
