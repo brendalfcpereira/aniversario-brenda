@@ -2,141 +2,451 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Confirmação - Aniversário da Brenda</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <title>Aniversário Brenda | Confirme sua Presença</title>
+  
+  <!-- Fontes do Google -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Ícones -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
   <style>
     :root {
-      --roxo-escuro: #4B1E73;
-      --amarelo: #FFD700;
-      --branco: #FFFFFF;
-      --cinza-transparente: rgba(255,255,255,0.08);
+      --primary-purple: #7e22ce;
+      --primary-pink: #db2777;
+      --light-pink: #fdf2f8;
+      --text-dark: #1f2937;
+      --text-gray: #6b7280;
+      --border-color: #fbcfe8;
     }
 
     * {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
     body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Inter', sans-serif;
-      background: linear-gradient(135deg, #3B0A4E, #4B1E73);
-      color: var(--branco);
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #4c1d95, #db2777, #be185d);
+      background-size: 200% 200%;
+      animation: gradientBg 10s ease infinite;
+      color: var(--text-dark);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 15px;
+      overflow-x: hidden;
+    }
+
+    @keyframes gradientBg {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Estrutura principal */
+    .page-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      max-width: 680px;
+      width: 100%;
+      margin: 0 auto;
     }
 
     .container {
-      max-width: 640px;
-      margin: 0 auto;
-      padding: 2rem;
+      background: #ffffff;
+      max-width: 580px;
+      width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+      padding: 2.5rem 2rem;
+      position: relative;
+      z-index: 5;
+    }
+
+    /* Detalhe de cor no topo do cartão */
+    .container::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 6px;
+      background: linear-gradient(to right, var(--primary-purple), var(--primary-pink));
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
+    }
+
+    /* --- Estilo das Fotos Polaroid --- */
+    .polaroid {
+      background: white;
+      padding: 5px 5px 18px 5px;
+      box-shadow: 2px 4px 15px rgba(0,0,0,0.18);
+      border-radius: 3px;
+      width: 93px;    
+      height: 130px;  
+      position: absolute;
+      z-index: 10;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .polaroid:hover {
+      transform: scale(1.15) rotate(0deg) !important;
+      z-index: 30;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.3);
+    }
+
+    .polaroid img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border: 1px solid #f0f0f0;
+    }
+
+    /* Fita Adesiva */
+    .polaroid::after {
+      content: "";
+      position: absolute;
+      top: -6px;
+      left: 50%;
+      transform: translateX(-50%) rotate(-3deg);
+      width: 28px;
+      height: 9px;
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(2px);
+      border: 1px solid rgba(255,255,255,0.4);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+
+    /* Posicionamento perfeitamente alinhado às margens do cartão branco */
+    .side-photo-1 { top: 30px; left: -28px; transform: rotate(-5deg); }
+    .side-photo-2 { top: 30px; right: -28px; transform: rotate(4deg); }
+    
+    .side-photo-3 { top: 240px; left: -30px; transform: rotate(3deg); }
+    .side-photo-4 { top: 240px; right: -30px; transform: rotate(-4deg); }
+
+    .side-photo-5 { top: 490px; left: -30px; transform: rotate(-6deg); }
+    .side-photo-6 { top: 490px; right: -30px; transform: rotate(5deg); }
+
+    .side-photo-7 { bottom: 80px; left: -28px; transform: rotate(4deg); }
+    .side-photo-8 { bottom: 80px; right: -28px; transform: rotate(-3deg); }
+
+    header {
       text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .badge {
+      display: inline-block;
+      background: var(--light-pink);
+      color: var(--primary-pink);
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
 
     h1 {
-      font-size: 2.5rem;
-      margin-bottom: 0.5rem;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 5px;
     }
 
-    p.subtitle {
-      font-size: 1.2rem;
-      margin-bottom: 1.5rem;
-      color: #e4d2f4;
+    .subtitle {
+      font-size: 0.95rem;
+      color: var(--text-gray);
     }
 
+    /* --- Cronômetro --- */
     .countdown {
       display: flex;
-      justify-content: center;
-      gap: 1rem;
-      margin-bottom: 2rem;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 1.5rem;
     }
 
-    .countdown div {
-      background: var(--cinza-transparente);
-      padding: 1rem;
-      border-radius: 8px;
-      font-weight: bold;
-    }
-
-    .map-button {
-      display: inline-block;
-      margin: 1rem auto 2rem;
-      background-color: var(--amarelo);
-      color: var(--roxo-escuro);
-      font-weight: bold;
-      padding: 0.75rem 1.5rem;
-      border-radius: 8px;
-      text-decoration: none;
-      transition: background 0.3s ease;
-    }
-
-    .map-button:hover {
-      background-color: #e6c200;
-    }
-
-    .form-embed {
-      margin-top: 2rem;
-    }
-
-    iframe {
-      width: 100%;
-      height: 700px;
-      border: none;
+    .time-box {
+      flex: 1;
+      background: var(--light-pink);
+      padding: 12px 5px;
       border-radius: 12px;
+      text-align: center;
+      border: 1px solid rgba(219, 39, 119, 0.1);
+    }
+
+    .time-box .number {
+      display: block;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--primary-purple);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .time-box .label {
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: var(--primary-pink);
+      text-transform: uppercase;
+    }
+
+    /* --- Botões --- */
+    .actions {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 1.5rem;
+    }
+
+    .btn-outline {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      padding: 10px;
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      color: var(--primary-pink);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      background: white;
+    }
+
+    .btn-outline:hover {
+      background: var(--light-pink);
+      border-color: var(--primary-pink);
+    }
+
+    /* --- Formulário --- */
+    .form-section {
+      border-top: 1px solid #f3f4f6;
+      padding-top: 1.2rem;
+    }
+
+    .form-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: var(--text-dark);
+      text-align: center;
+    }
+
+    .form-group {
+      margin-bottom: 1rem;
+    }
+
+    label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--text-dark);
+      margin-bottom: 4px;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.9rem;
+      color: var(--text-dark);
+      background: #f9fafb;
+      transition: all 0.3s ease;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: var(--primary-purple);
+      background: white;
+      box-shadow: 0 0 0 3px rgba(126, 34, 206, 0.1);
+    }
+
+    input::placeholder, textarea::placeholder {
+      color: #9ca3af;
+    }
+
+    button[type="submit"] {
+      width: 100%;
+      background: linear-gradient(to right, var(--primary-purple), var(--primary-pink));
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      margin-top: 5px;
+    }
+
+    button[type="submit"]:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(219, 39, 119, 0.3);
     }
 
     footer {
-      margin-top: 2rem;
-      font-size: 0.9rem;
-      color: #cfcfcf;
-    }
-
-    @media (max-width: 500px) {
-      h1 { font-size: 2rem; }
-      .countdown { flex-direction: column; }
+      text-align: center;
+      margin-top: 1.2rem;
+      font-size: 0.75rem;
+      color: var(--text-gray);
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>🎉 Aniversário da Brenda</h1>
-    <p class="subtitle">15 de agosto &bull; Som da Gente &bull; Vila Velha</p>
 
-    <div class="countdown">
-      <div id="days">-- d</div>
-      <div id="hours">-- h</div>
-      <div id="minutes">-- m</div>
-      <div id="seconds">-- s</div>
+  <div class="page-wrapper">
+
+    <!-- FOTOS NAS LATERAIS -->
+    <div class="polaroid side-photo-1">
+      <img src="https://scontent.fvix18-1.fna.fbcdn.net/v/t39.30808-6/498679429_2724234644431142_1720469970639201176_n.jpg?stp=dst-jpg_tt6&cstp=mx957x960&ctp=s206x206&_nc_cat=101&ccb=1-7&_nc_sid=fe5ecc&_nc_ohc=p36YSI8D-qwQ7kNvwFyegVR&_nc_oc=AdpeUZlsTc1dgxqSMb8jNzMP-Bo7_gg3nhHQ-D2bOfT1sh5OM9nbIS6Vg06l8OwnpmVMKSPQC_drNF1J6dJvFkPm&_nc_zt=23&_nc_ht=scontent.fvix18-1.fna&_nc_gid=tU-WVAbo4evjlMEGIyfxQQ&_nc_ss=7b2a8&oh=00_AQF2AOPplpmbGFxtDkiCXa6CaJ359y8jF2yxjriLGWGdAg&oe=6A73BE84" alt="">
+    </div>
+    <div class="polaroid side-photo-2">
+      <img src="https://scontent.fvix18-1.fna.fbcdn.net/v/t39.30808-6/490348648_2689474204573853_6731168896719101540_n.jpg?stp=c0.169.1536.1536a_dst-jpg_tt6&cstp=mx1536x1536&ctp=s206x206&_nc_cat=100&ccb=1-7&_nc_sid=f2f09f&_nc_ohc=AZoOyjZudRMQ7kNvwF2Rggr&_nc_oc=AdoctWKltmAbiiwgP9YxKsVkXykPwHaiQaggTOhufv6hXtr9w5xO3Pat-PhpKG9UTKEtaflKm-buvVP84lf6vw6D&_nc_zt=23&_nc_ht=scontent.fvix18-1.fna&_nc_gid=JxXwUThoWNaKBlrlYIiAAg&_nc_ss=7b2a8&oh=00_AQEUgqf6CA_WWETOE34JMKPH-Nj-NN5aUsHAx2x5dsbmag&oe=6A73E036" alt="">
     </div>
 
-    <a href="https://maps.app.goo.gl/JtnR7Aka1RSf2vwD9" target="_blank" class="map-button">📍 Ver Localização</a>
+    <div class="polaroid side-photo-3">
+      <img src="https://scontent.fvix18-1.fna.fbcdn.net/v/t39.30808-6/489530325_2686187158235891_1759209577302089692_n.jpg?stp=dst-jpg_tt6&cstp=mx800x600&ctp=s800x600&_nc_cat=103&ccb=1-7&_nc_sid=9eae26&_nc_ohc=LNcHNx8kUBsQ7kNvwHjRCA-&_nc_oc=AdoxrVQsyClmeutYMs4rs5BF8LZqbct8D3ipjrLxqFJ7f8JQVSPUMmSA-pcDI0cskcpzSDuZa6K9Pg51EGYqvvqc&_nc_zt=23&_nc_ht=scontent.fvix18-1.fna&_nc_gid=YuDZk077JprPbGCbhtG4oQ&_nc_ss=7b2a8&oh=00_AQE9LZnErDUPacJy6B6Q36npb-biqab50Wfo0umKw0fnyA&oe=6A73BE3C" alt="">
+    </div>
+    <div class="polaroid side-photo-4">
+      <img src="https://scontent.fvix18-1.fna.fbcdn.net/v/t39.30808-6/499480995_2725176384336968_642920515097045939_n.jpg?stp=c0.208.810.810a_dst-jpg_tt6&cstp=mx810x810&ctp=s206x206&_nc_cat=104&ccb=1-7&_nc_sid=50ad20&_nc_ohc=Ddcc6NDHuw0Q7kNvwHHv8-5&_nc_oc=Ado5GH0Loh2HCswcmXxLQ89ts51SKxfzj2_X4glv8SMSqGIWaL8yC5TuQPz6Hr0tyCgJuEld3mnZyCd0VVD4DSHi&_nc_zt=23&_nc_ht=scontent.fvix18-1.fna&_nc_gid=tU-WVAbo4evjlMEGIyfxQQ&_nc_ss=7b2a8&oh=00_AQGTeaVyLDxoswWQhMHUQvTkI4rLOp2Hepv1zhjpz9AhDQ&oe=6A73F10E" alt="">
+    </div>
 
-    <div class="form-embed">
-<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdDYjWIKvYNGE6rKP59NmVH2TV-oEMM_-KqkP23TGH94qI3xw/viewform?embedded=true" width="640" height="895" frameborder="0" marginheight="0" marginwidth="0">Carregando…</iframe>    </div>
+    <div class="polaroid side-photo-5">
+      <img src="https://scontent.fvix18-1.fna.fbcdn.net/v/t39.30808-6/473423637_18482503513030104_2020939912477054877_n.jpg?stp=c0.119.1440.1440a_dst-jpg_tt6&cstp=mx1440x1440&ctp=s206x206&_nc_cat=111&ccb=1-7&_nc_sid=714c7a&_nc_ohc=vnuoum8ish4Q7kNvwFVtq8q&_nc_oc=AdoAiNe1G2BP-fkOCl5RZHAwCLDnnkR9mp9uO-GQkT3IsDPGobZ5rxQv31b93vdnWx5dCZFMGqkQ8qpED3iDnxxa&_nc_zt=23&_nc_ht=scontent.fvix18-1.fna&_nc_gid=daZfAtyEgpl4Ib_m5ZOm4A&_nc_ss=7b2a8&oh=00_AQFaRY2vbAzD3rRHURCDkBxw2fYnfff8WhPH7eOz3vjjvA&oe=6A73C93D" alt="">
+    </div>
+    <div class="polaroid side-photo-6">
+      <img src="https://scontent.fvix18-1.fna.fbcdn.net/v/t39.30808-6/494911327_2709017689286171_4346446559493370706_n.jpg?stp=dst-jpg_tt6&cstp=mx1080x1080&ctp=s206x206&_nc_cat=100&ccb=1-7&_nc_sid=6439a4&_nc_ohc=BTpReYc_xBoQ7kNvwGnXngf&_nc_oc=AdrgHhne46P-MyPAl2kDJJqnRIrRTbeoE6KWfN8visNnVGJGFZ_Bp_Pey-kSnsiBFJalzab_d-r98GBmyXMLDvfV&_nc_zt=23&_nc_ht=scontent.fvix18-1.fna&_nc_gid=1vyhxBfh4mjSs9GDLzwrPw&_nc_ss=7b2a8&oh=00_AQFvb8WjmqZ9AwU7AsrrgcNFPPfUlRWVC7vvy0yAIRX4QA&oe=6A73DE20" alt="">
+    </div>
 
-    <footer>
-      Site feito com carinho para a festa da Brenda 🎶
-    </footer>
+    <div class="polaroid side-photo-7">
+      <img src="https://scontent.fvix18-1.fna.fbcdn.net/v/t39.30808-6/470877676_18477568399030104_5237816633906269380_n.jpg?stp=c0.117.1440.1440a_dst-jpg_tt6&cstp=mx1440x1440&ctp=s206x206&_nc_cat=109&ccb=1-7&_nc_sid=714c7a&_nc_ohc=Ac8CVgyc1rYQ7kNvwEe-hxv&_nc_oc=AdrnBIulGa4hjpzDuCi9G9nOFf_59QjTSjibg9oUpnOhMisL3JXpD_EZVC3jVh32Y97YqJA45ynJOI750V7gxO0w&_nc_zt=23&_nc_ht=scontent.fvix18-1.fna&_nc_gid=INx362AQGRhc1pM4L8ZqGg&_nc_ss=7b2a8&oh=00_AQEPrxdzwqCmbRY7eT_504zmtZMxoTbSRePY_Te5GBnObg&oe=6A73CD2D" alt="">
+    </div>
+    <div class="polaroid side-photo-8">
+      <img src="https://scontent.fvix18-1.fna.fbcdn.net/v/t39.30808-6/473689925_18482510647030104_7068660981555105128_n.jpg?stp=c0.115.1440.1440a_dst-jpg_tt6&cstp=mx1440x1440&ctp=s206x206&_nc_cat=107&ccb=1-7&_nc_sid=714c7a&_nc_ohc=mkbn5exVKMoQ7kNvwFVVsYP&_nc_oc=AdoUmwGk-OrOaLJtPKUDkmHc789H6LFDUFYG7SdsHPoGtznWrz3Z-T42YFk6LYRNFV47MyW9pxHceD8u4qMYq6cf&_nc_zt=23&_nc_ht=scontent.fvix18-1.fna&_nc_gid=daZfAtyEgpl4Ib_m5ZOm4A&_nc_ss=7b2a8&oh=00_AQGtQ_nuGsoh5ASFj9X_UYZq7896Oqd693ZnsbttruBLvQ&oe=6A73EB92" alt="">
+    </div>
+
+    <!-- --- CARTÃO PRINCIPAL --- -->
+    <div class="container">
+      
+      <header>
+        <div class="badge">Especial 19 de Agosto</div>
+        <h1>B-Day da Brenda</h1>
+        <p class="subtitle">Fire House Pub &bull; Vila Velha - ES</p>
+      </header>
+
+      <!-- Cronômetro -->
+      <div class="countdown">
+        <div class="time-box">
+          <span class="number" id="days">00</span>
+          <span class="label">Dias</span>
+        </div>
+        <div class="time-box">
+          <span class="number" id="hours">00</span>
+          <span class="label">Horas</span>
+        </div>
+        <div class="time-box">
+          <span class="number" id="minutes">00</span>
+          <span class="label">Min</span>
+        </div>
+        <div class="time-box">
+          <span class="number" id="seconds">00</span>
+          <span class="label">Seg</span>
+        </div>
+      </div>
+
+      <!-- Ações (Mapa e Agenda) -->
+      <div class="actions">
+        <a href="https://maps.app.goo.gl/HdAT713Gr5ig2bAo9" target="_blank" class="btn-outline">
+          <i class="fa-solid fa-location-dot"></i> Ver no Mapa
+        </a>
+        <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Anivers%C3%A1rio+da+Brenda&dates=20260819T223000Z/20260820T023000Z&details=Celebra%C3%A7%C3%A3o+do+anivers%C3%A1rio+da+Brenda!&location=Fire+House+Pub,+Vila+Velha" target="_blank" class="btn-outline">
+          <i class="fa-regular fa-calendar-check"></i> Salvar na Agenda
+        </a>
+      </div>
+
+      <!-- Seção de Confirmação -->
+      <div class="form-section">
+        <h2 class="form-title">Confirme sua Presença</h2>
+        
+        <!-- LEMBRE-SE DE TROCAR O SEU_FORM_ID PELO CÓDIGO DO FORMSPREE -->
+        <form action="https://formspree.io/f/SEU_FORM_ID" method="POST">
+          
+          <div class="form-group">
+            <label for="nome">Nome completo</label>
+            <input type="text" id="nome" name="nome" placeholder="Como devemos te chamar?" required>
+          </div>
+
+          <div class="form-group">
+            <label for="presenca">Você poderá comparecer?</label>
+            <select id="presenca" name="presenca" required>
+              <option value="" disabled selected>Selecione uma opção...</option>
+              <option value="Sim, estarei lá">Sim, com certeza! 🎉</option>
+              <option value="Não poderei ir">Infelizmente não poderei ir</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="musica">Qual música não pode faltar?</label>
+            <input type="text" id="musica" name="musica" placeholder="Sua sugestão para a playlist...">
+          </div>
+
+          <div class="form-group">
+            <label for="recado">Mensagem para a aniversariante (opcional)</label>
+            <textarea id="recado" name="recado" rows="3" placeholder="Deixe um recadinho especial..."></textarea>
+          </div>
+
+          <button type="submit">Enviar Confirmação <i class="fa-solid fa-paper-plane" style="margin-left: 5px;"></i></button>
+        </form>
+      </div>
+
+      <footer>
+        Criado com carinho para a festa da Brenda ✨
+      </footer>
+
+    </div>
+
   </div>
 
   <script>
-    const targetDate = new Date("August 15, 2025 19:20:00").getTime();
+    // Configurado para 19 de Agosto de 2026 às 19:30
+    const targetDate = new Date("August 19, 2026 19:30:00").getTime();
+    
     function updateCountdown() {
       const now = new Date().getTime();
       const diff = targetDate - now;
+      
       if (diff < 0) {
-        document.querySelector('.countdown').innerHTML = "A festa já começou!";
+        document.querySelector('.countdown').innerHTML = "<h3 style='width: 100%; text-align: center; color: var(--primary-pink);'>A comemoração já começou! 🎈</h3>";
         return;
       }
+      
       const d = Math.floor(diff / (1000 * 60 * 60 * 24));
       const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
       const s = Math.floor((diff % (1000 * 60)) / 1000);
 
-      document.getElementById('days').innerText = `${d} d`;
-      document.getElementById('hours').innerText = `${h} h`;
-      document.getElementById('minutes').innerText = `${m} m`;
-      document.getElementById('seconds').innerText = `${s} s`;
+      document.getElementById('days').innerText = d.toString().padStart(2, '0');
+      document.getElementById('hours').innerText = h.toString().padStart(2, '0');
+      document.getElementById('minutes').innerText = m.toString().padStart(2, '0');
+      document.getElementById('seconds').innerText = s.toString().padStart(2, '0');
     }
+    
     updateCountdown();
     setInterval(updateCountdown, 1000);
   </script>
