@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>B-Day Brenda | Confirme sua Presença</title>
+  <title>Aniversário Brenda | Confirme sua Presença</title>
   
   <!-- Fontes do Google -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -127,7 +127,7 @@
       box-shadow: 0 1px 3px rgba(0,0,0,0.1);
     }
 
-    /* Posicionamento perfeitamente alinhado às margens do cartão branco */
+    /* Posicionamento perfeitamente alinhado às margens do cartão branco (DESKTOP) */
     .side-photo-1 { top: 30px; left: -28px; transform: rotate(-5deg); }
     .side-photo-2 { top: 30px; right: -28px; transform: rotate(4deg); }
     
@@ -306,6 +306,57 @@
       font-size: 0.75rem;
       color: var(--text-gray);
     }
+
+    /* ========================================= */
+    /* RESPONSIVIDADE PARA CELULARES (MOBILE FIX)*/
+    /* ========================================= */
+    @media (max-width: 768px) {
+      body {
+        padding: 20px 10px;
+        align-items: flex-start; /* Permite rolar a tela normalmente */
+      }
+      
+      .page-wrapper {
+        display: flex;
+        flex-direction: row; /* Muda o comportamento para alinhar itens em linha e quebrar */
+        flex-wrap: wrap;
+        gap: 15px;
+        padding-bottom: 30px;
+      }
+
+      .container {
+        order: 5; /* Garante que o cartão branco fique no meio das fotos */
+        margin: 10px 0;
+        padding: 2rem 1.5rem; /* Ajusta o espaçamento interno no celular */
+      }
+
+      /* Tira as fotos do posicionamento absoluto e coloca elas fluidas na tela */
+      .polaroid {
+        position: relative;
+        top: auto !important;
+        left: auto !important;
+        right: auto !important;
+        bottom: auto !important;
+        width: calc(25% - 12px); /* Cabem umas 4 por linha, dependendo da tela */
+        min-width: 75px;
+        max-width: 90px;
+        height: 105px;
+      }
+
+      /* 4 fotos vão ficar ACIMA do cartão */
+      .side-photo-1, .side-photo-2, .side-photo-3, .side-photo-4 {
+        order: 1;
+      }
+
+      /* 4 fotos vão ficar ABAIXO do cartão */
+      .side-photo-5, .side-photo-6, .side-photo-7, .side-photo-8 {
+        order: 10;
+      }
+
+      /* Ajustes extras para ficar mais bonito no celular */
+      h1 { font-size: 1.8rem; }
+      .actions { flex-direction: column; }
+    }
   </style>
 </head>
 <body>
@@ -385,7 +436,7 @@
         <h2 class="form-title">Confirme sua Presença</h2>
         
         <!-- LEMBRE-SE DE TROCAR O SEU_FORM_ID PELO CÓDIGO DO FORMSPREE -->
-        <form action="https://formspree.io/f/SEU_FORM_ID" method="POST">
+        <form action="https://formspree.io/f/mykrqpqq" method="POST">
           
           <div class="form-group">
             <label for="nome">Nome completo</label>
